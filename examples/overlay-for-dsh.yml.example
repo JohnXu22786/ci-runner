@@ -1,0 +1,26 @@
+# 供 dsh 的 profile / home 级 cordis.patch.yml 使用的插件行模板。
+# 与本 bundle 内置的 'ci-runner' 行二选一；两者注册的工具相同
+# （ci_trigger / ci_status / ci_logs / ci_watch / ci_diagnose）。
+#
+# 用法：把下面的行插入 $DSH_HOME/profiles/<profile>/cordis.patch.yml
+# （或 --patch 覆盖文件）的数组顶部，然后重启 dsh。
+- insert:
+    - id: ci-runner
+      name: '<abs-path-to-ci-runner>/src/adapter.js'
+      # 可选：插件配置（覆盖默认值；不写则全部使用默认值）
+      config:
+        github:
+          defaultRepo: acme/app
+          defaultBranch: main
+        local:
+          templates:
+            - name: npm test
+              command: npm test
+        diagnosis:
+          # 走 harness 的 ctx.llm 时不要配置此项；需要独立 OpenAI 兼容端点时：
+          # llm:
+          #   baseUrl: https://api.deepseek.com/v1
+          #   apiKey: sk-REPLACE-ME
+          #   model: deepseek-chat
+          provider: ''
+          model: ''

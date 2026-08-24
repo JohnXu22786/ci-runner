@@ -1,0 +1,32 @@
+{
+  "github": {
+    "tokenEnv": "GITHUB_TOKEN",
+    "defaultRepo": "acme/app",
+    "defaultBranch": "main",
+    "apiBase": "https://api.github.com",
+    "pollIntervalMs": 5000,
+    "pollTimeoutMs": 600000,
+    "readLogChars": 30000
+  },
+  "local": {
+    "cwd": ".",
+    "timeoutMs": 120000,
+    "maxOutputChars": 40000,
+    "templates": [
+      { "name": "npm test", "command": "npm test" },
+      { "name": "npm run lint", "command": "npm run lint" },
+      { "name": "pytest", "command": "python -m pytest -q" },
+      { "name": "go test", "command": "go test ./..." }
+    ]
+  },
+  "diagnosis": {
+    "llm": {
+      "baseUrl": "https://api.deepseek.com/v1",
+      "apiKey": "sk-REPLACE-ME",
+      "model": "deepseek-chat"
+    },
+    "maxTailChars": 12000,
+    "timeoutMs": 120000,
+    "temperature": 0.2
+  }
+}

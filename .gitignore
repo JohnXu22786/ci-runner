@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+*.tgz
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store
+
+# Never commit credentials or local diagnostic reports.
+.env
+.env.*
+!.env.example
+*.log
+.reports/
